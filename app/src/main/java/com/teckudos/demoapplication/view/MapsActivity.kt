@@ -33,7 +33,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, EasyPermissions.Pe
 
     companion object {
         private val defaultLocation = LatLng(28.5355, 77.3910)
-        private const val DEFAULT_ZOOM = 14f
+        private const val DEFAULT_ZOOM = 12f
         private const val KEY_LOCATION = "location"
         private const val KEY_CAMERA_POSITION = "camera_position"
         private const val MAX_PLACES = 5
@@ -64,7 +64,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, EasyPermissions.Pe
         init()
         setListeners()
         initObservers()
-//        getCurrentLocation()
+        getCurrentLocation()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -115,7 +115,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, EasyPermissions.Pe
         viewModel.places.observe(this, Observer { placesDTO ->
             placesDTO?.let {
                 placesDTO.results.forEach {
-                    googleMap.clear()
+//                    googleMap.clear()
                     googleMap.addMarker(
                         MarkerOptions().position(
                             LatLng(
@@ -180,6 +180,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, EasyPermissions.Pe
         }
         updateLocationUI()
         getDeviceLocation()
+        viewModel.updateFilter(PlacesApiFilter.SHOW_ALL)
     }
 
     private fun updateLocationUI() {

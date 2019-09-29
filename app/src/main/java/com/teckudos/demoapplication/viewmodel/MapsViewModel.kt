@@ -38,7 +38,7 @@ class MapsViewModel : ViewModel() {
 
     private fun getPlaces(filter: PlacesApiFilter){
         coroutineScope.launch {
-            val getPropertiesDeferred = PlacesApi.retrofitService.getPlaces(DEFAULT_LOCATION, "15000",
+            val getPropertiesDeferred = PlacesApi.retrofitService.getPlaces(DEFAULT_LOCATION, "150000",
                 filter.value, "AIzaSyDo5mUCwS1ubz5hhqIOmItxdC5QmK6P_c0")
             try {
                 _status.value = PlacesApiStatus.LOADING
