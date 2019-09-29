@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.teckudos.demoapplication.viewmodel.MapsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            style="@style/Widget.AppCompat.SearchView.ActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbHotel"
+            style="@style/CheckBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/hotel"
+            map:layout_constraintEnd_toStartOf="@+id/cbSchool"
+            map:layout_constraintHorizontal_bias="0.5"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbSchool"
+            style="@style/CheckBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/school"
+            map:layout_constraintBottom_toBottomOf="@+id/cbHotel"
+            map:layout_constraintEnd_toStartOf="@+id/cbHospital"
+            map:layout_constraintHorizontal_bias="0.5"
+            map:layout_constraintStart_toEndOf="@+id/cbHotel"
+            map:layout_constraintTop_toTopOf="@+id/cbHotel" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbHospital"
+            style="@style/CheckBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/hospital"
+            map:layout_constraintBottom_toBottomOf="@+id/cbHotel"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintHorizontal_bias="0.5"
+            map:layout_constraintStart_toEndOf="@+id/cbSchool"
+            map:layout_constraintTop_toTopOf="@+id/cbHotel" />
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toBottomOf="@+id/cbSchool" />
+
+        <ImageView
+            android:id="@+id/status_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/map"
+            app:layout_constraintLeft_toLeftOf="@+id/map"
+            app:layout_constraintRight_toRightOf="@+id/map"
+            app:placesApiStatus="@{viewModel.status}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

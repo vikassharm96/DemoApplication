@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.teckudos.demoapplication"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
+
+    //core
+    implementation 'androidx.core:core-ktx:1.1.0'
+
+    //support library
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //constraint layout
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    //timber
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    //material design
+    implementation "com.google.android.material:material:$version_material"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // view model and live data (arch components)
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    // Coroutines for getting of the UI thread
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+
+    // Moshi for parsing JSON format
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Retrofit with Moshi Converter
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    // Retrofit Coroutines Support
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
+
+    // Client for retrieving location
+    implementation "com.google.android.gms:play-services-location:$version_play_services"
+
+    // Google map
+    implementation "com.google.android.gms:play-services-maps:$version_play_services"
+
+    // Runtime permission
+    implementation "pub.devrel:easypermissions:$runtime_permission"
+
+    // Places
+    implementation "com.google.android.gms:play-services-places:$version_play_services"
+
+    //testing
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
